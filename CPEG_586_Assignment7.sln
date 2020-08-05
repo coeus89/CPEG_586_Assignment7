@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "CPEG_586_Assignment7", "CPEG_586_Assignment7.pyproj", "{AB5C1DB7-A38D-40C2-B1AF-CAD7D1B75A95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB5C1DB7-A38D-40C2-B1AF-CAD7D1B75A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB5C1DB7-A38D-40C2-B1AF-CAD7D1B75A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02A7DF9D-92B9-43CC-B630-39E0A4B0E237}
+	EndGlobalSection
+EndGlobal
