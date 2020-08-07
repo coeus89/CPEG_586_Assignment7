@@ -28,23 +28,33 @@ def visualize(embed, labels):
 def main():
     # __________example 1 siamese_____________________
     # Load MNIST dataset
-    mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
-    mnist_test_labels = mnist.test.labels
+    # mnist = input_data.read_data_sets('MNIST_data', one_hot=False)
 
     mnist2 = keras.datasets.mnist
     (train_images, train_labels), (test_images, test_labels) = mnist2.load_data()
-
+    train_images, test_images = train_images / 255.0, test_images / 255.0
+    # Get a numpy list of each class from training images
+    num_classes = 10
+    # class_Images = np.zeros((num_classes, int(train_images.shape[0] / num_classes), train_images.shape[1], train_images.shape[2]))
+    class_Images = np.empty((num_classes), dtype=object)
+    for j in range(num_classes):
+        temp = []
+        for i in range(len(train_labels)):
+            if train_labels[i] == j:
+                temp.append(train_images[i])
+        class_Images[j] = np.array(temp)
+    # class_Images = class_Images.astype(np.float32, casting='unsafe')
     triplet = Triplet()
-    triplet.trainTriplet(mnist, 1000, 128)  # 5000, 128 produces good results
+    triplet.trainTriplet(train_images, train_labels, class_Images, 1000, 128)
     # siamese.saveModel()
     # siamese.loadModel()
-    triplet.trainTripletForClassification(mnist, 1000, 128)
+    triplet.trainTripletForClassification(train_images, train_labels, 1000, 128)
 
     # Test model
-    embed = triplet.test_model(input1=mnist.test.images)
+    embed = triplet.test_model(input1=test_images)
     embed = embed.reshape([-1, 2])
-    visualize(embed, mnist_test_labels)
-    triplet.computeAccuracy(mnist)
+    visualize(embed, test_labels)
+    triplet.computeAccuracy(test_images, test_labels)
 
 
 if __name__ == "__main__":
